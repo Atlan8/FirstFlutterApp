@@ -2,6 +2,7 @@ import 'package:first_flutter_app/engine/customColors.dart';
 import 'package:first_flutter_app/engine/customIcons.dart';
 import 'package:first_flutter_app/views/base/tabbar.dart';
 import 'package:first_flutter_app/views/home/index.dart';
+import 'package:first_flutter_app/views/news/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -35,10 +36,7 @@ class _RootView extends State<RootView> {
   Widget getBody() {
     List<Widget> pages = [
       HomePage(),
-      Container(
-        alignment: Alignment.center,
-        child: Text('新鲜事', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-      ),
+      NewsPage(),
       Container(
         alignment: Alignment.center,
         child: Text('消息', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
