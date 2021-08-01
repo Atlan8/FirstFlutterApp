@@ -1,7 +1,6 @@
-import 'dart:js';
-
 import 'package:first_flutter_app/engine/customColors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 typedef OnTapCallback = void Function(String key);
@@ -31,9 +30,34 @@ class _PrivaryViewState extends State<PrivacyView> {
   List<String> _list = [];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _split();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container();
+    return RichText(text: TextSpan(
+      style: DefaultTextStyle.of(context).style,
+      children: [
+        ..._list.map((e) {
+          if (widget.keys.contains(e)) {
+            return TextSpan(
+              text: '$e',
+              style: widget.keyStyle ?? TextStyle(color: Theme.of(context).primaryColor),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  widget.onTapCallback?.call(e);
+                }
+            );
+          } else {
+            return TextSpan(text: '$e', style: widget.style);
+          }
+        }).toList()
+      ]
+    ));
   }
 
   void _split() {

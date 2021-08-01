@@ -28,7 +28,7 @@ class _WebViewPage extends State<WebViewPage> {
   JavascriptChannel jsBridge(BuildContext context) => JavascriptChannel(
       name: 'jsbridge', // 与 H5 端保持一致，否则会收不到消息
       onMessageReceived: (JavascriptMessage message) async {
-        debugPrint(message.message);
+        // debugPrint(message.message);
       }
   );
 
@@ -60,13 +60,13 @@ class _WebViewPage extends State<WebViewPage> {
                   controller.loadUrl(widget.url);
                 }
 
-                controller.canGoBack().then((value) => debugPrint(value.toString()));
-                controller.canGoForward().then((value) => debugPrint(value.toString()));
-                controller.currentUrl().then((value) => debugPrint(value.toString()));
+                // controller.canGoBack().then((value) => debugPrint(value.toString()));
+                // controller.canGoForward().then((value) => debugPrint(value.toString()));
+                // controller.currentUrl().then((value) => debugPrint(value.toString()));
               },
               onPageFinished: (String value) {
-                widget._webViewController.evaluateJavascript('document.title')
-                .then((title) => debugPrint(title));
+                // widget._webViewController.evaluateJavascript('document.title')
+                // .then((title) => debugPrint(title));
               },
             )
         )
